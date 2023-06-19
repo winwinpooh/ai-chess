@@ -34,7 +34,7 @@ int minimax(State* child, int depth , bool maximizingPlayer){
         int value = 10000;
         for (auto i : actions){
             State *nextstate = child ->next_state(i);
-            value = std::max(value , minimax(nextstate , depth - 1 , true));
+            value = std::min(value , minimax(nextstate , depth - 1 , true));
         }
 
         return value ;
