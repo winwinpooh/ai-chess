@@ -59,7 +59,7 @@ Move alpha_beta::get_move(State *state, int depth){
         int max = -10000;
         for(auto i : actions){
             State *nextstate = state -> next_state(i);
-            int next = alphabeta(nextstate, depth - 1 , -10000 , 10000, false);
+            int next = alphabeta(nextstate, depth - 1 , -10000 , 10000, true);
             if (next > max){
                 max = next;
                 max_i = i;
@@ -73,7 +73,7 @@ Move alpha_beta::get_move(State *state, int depth){
         int min = 10000;
         for(auto i : actions){
             State *nextstate = state -> next_state(i);
-            int next = alphabeta(nextstate, depth - 1, -10000, 10000, true);
+            int next = alphabeta(nextstate, depth - 1, -10000, 10000, false);
             if (next < min){
                 min = next;
                 min_i = i;
