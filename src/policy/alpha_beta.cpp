@@ -31,7 +31,7 @@ int alphabeta(State* child, int depth , int alpha, int beta, bool maximizingPlay
                 break;
             }
         }
-        return value ;
+        return alpha ;
     }
 
     else{
@@ -45,7 +45,7 @@ int alphabeta(State* child, int depth , int alpha, int beta, bool maximizingPlay
             }
         }
 
-        return value ;
+        return beta ;
     }
 }
 
