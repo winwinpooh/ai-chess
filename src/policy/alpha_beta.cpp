@@ -25,9 +25,9 @@ int alphabeta(State* child, int depth , int alpha, int beta, bool maximizingPlay
         int value = -10000;
         for(auto i : actions){
             State *nextstate = child ->next_state(i);
-            value = std::max(value , alphabeta(nextstate , depth - 1 , alpha, beta, false));
+            value = std::max(value , alphabeta(nextstate , depth - 1 ,alpha, beta, false));
             alpha = std::max(alpha, value);
-            if (alpha >= beta){
+            if(alpha>= beta){
                 break;
             }
         }
@@ -39,8 +39,8 @@ int alphabeta(State* child, int depth , int alpha, int beta, bool maximizingPlay
         for (auto i : actions){
             State *nextstate = child ->next_state(i);
             value = std::min(value , alphabeta(nextstate , depth - 1 , alpha, beta, true));
-            beta = std::min(beta , value);
-            if (beta <= alpha){
+            beta = std::min(beta,value);
+            if(beta<= alpha){
                 break;
             }
         }
@@ -59,7 +59,7 @@ Move alpha_beta::get_move(State *state, int depth){
         int max = -10000;
         for(auto i : actions){
             State *nextstate = state -> next_state(i);
-            int next = alphabeta(nextstate, depth - 1 , -10000 , 10000, true);
+            int next = alphabeta(nextstate, depth - 1 , -10000, 10000, false);
             if (next > max){
                 max = next;
                 max_i = i;
@@ -73,7 +73,7 @@ Move alpha_beta::get_move(State *state, int depth){
         int min = 10000;
         for(auto i : actions){
             State *nextstate = state -> next_state(i);
-            int next = alphabeta(nextstate, depth - 1, -10000, 10000, false);
+            int next = alphabeta(nextstate, depth - 1, -10000, 10000, true);
             if (next < min){
                 min = next;
                 min_i = i;
